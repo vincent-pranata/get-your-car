@@ -1,0 +1,12 @@
+runtime: python37
+
+handlers:
+- url: .*
+  script: auto
+
+
+env_variables:
+  CLOUD_SQL_USERNAME: root
+  CLOUD_SQL_PASSWORD: 1111
+  CLOUD_SQL_DATABASE_NAME: Data
+  CLOUD_SQL_CONNECTION_NAME: get-your-car:australia-southeast1:getyourcar

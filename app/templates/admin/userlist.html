@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Your Car</title>
+    <script src="jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1632750_204xwxiwzht.css?1583918713" />
+    <link href="{{ url_for('static', filename='admin/style.css') }}" rel="stylesheet" >
+    <style>
+        /* Table Styles */
+
+        .table-wrapper {
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+    .fl-table td, .fl-table th {
+        text-align: center;
+        padding: 8px;
+    }
+
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+    }
+
+    .fl-table thead th {
+        color: #ffffff;
+        background: #4FC3A1;
+    }
+
+
+        .fl-table thead th:nth-child(odd) {
+            color: #ffffff;
+            background: #324960;
+        }
+
+    .fl-table tr:nth-child(even) {
+        background: #F8F8F8;
+    }
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+
+    .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+
+        .fl-table thead th:last-child {
+            border-bottom: none;
+        }
+
+    .fl-table thead {
+        float: left;
+    }
+
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+
+        .fl-table tbody tr:nth-child(odd) {
+            background: none;
+        }
+
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <div class="body_con">
+        <div class="body_top"> Get Your Car Admin Page</div>
+            <div class="body_left">
+                <ul class="body_left_list">
+                <li>
+                    <label>
+                    <span>  <a href="/admin/home">Account</a>  </span> 
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/carlist">Car List</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/addcar">Register Car</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/userlist">User List</a></span>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/logout">Logout</a></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="body_right">
+            <h2>LIST OF USER</h2>
+            {% if customers%}
+            <div class="table-wrapper">        
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Date of Birth</th>
+                            <th>Email Address</th>
+                            <th>Mobile</th>
+                            <th>Address</th>
+                            <th>License Number</th>  
+                            <th>Price Plan</th>
+                            <th>Premium Expiry</th>
+                        </tr>
+                    </thead>
+                    <!-- try to use foreach loop to print div -->
+                    <tbody>       
+                        {% for cust in customers %}
+                        <tr>
+                            <td style="word-wrap:break-word;">{{cust[1]}}</td>
+                            <td style="word-wrap:break-word;">{{cust[2]}}</td>
+                            <td style="word-wrap:break-word;">{{cust[3]}}</td>
+                            <td style="word-wrap:break-word;">{{cust[4]}}</td>
+                            <td style="word-wrap:break-word;">{{cust[6]}}</td>
+                            <td style="word-wrap:break-word;">
+                                {% for address in addresses %}
+                                {% if cust[0]==address[1] %}
+                                    {{address[2]}}/{{address[3]}}
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td style="word-wrap:break-word;">
+                                {% for license in licenses %}
+                                {% if cust[0]==license[1] %}
+                                    {{license[2]}}
+                                {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td style="word-wrap:break-word;">
+                                {% if cust[7]==0 %}
+                                    Regular
+                                {% else %}
+                                    Premium
+                                {% endif %}
+                            </td>
+                            <td style="word-wrap:break-word;">
+                                {% if cust[8] %}
+                                  {{cust[8]}}
+                                {% else %}
+                                    Not Registered as Premium
+                                {% endif %}
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    <tbody>
+                </table>            
+            </div> 
+            {% else %}
+            <div>
+                <p>No customer is rregistered</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="style.js"></script>
+</body>
+</html>
+
+<style>
+  div.search{
+   height: 40px;
+   width: 600px;  
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   margin: 0;
+   padding: 0;
+  }
+  div.search form{
+   width: 100%;
+   height: 100%;
+  }
+  div.search form input:nth-child(2){
+   width: 400px;
+   height: 100%;
+   font-size: 16px;
+   text-indent: 40px;
+   border: none;
+   float: left;
+   margin-top:10px;
+  }
+  div.search form input:nth-child(3){
+   width: 100px;
+   height: 100%;
+   font-size: 16px;
+   background-color:  #1d8ff0;
+  }
+  div.search form img{
+   left: 50vw;
+   transform: translateX(-400px);
+   margin-top: 20px;
+   margin-left: 10px;
+   height: 20px;
+   border-radius: 2px;
+  }
+  .userlist{
+width:100%;
+height: auto;
+margin-top: 50px;
+  }
+</style>

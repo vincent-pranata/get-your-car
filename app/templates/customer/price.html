@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Plans</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet"   type="text/css" href="/static/price/pricing.css" >
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="body">
+  <div class="masthead clearfix">
+    <div class="inner mx-auto"  style="background-color: #C0BDCB;">
+      <nav class="navbar  " >
+        <ul class="nav  masthead-nav mx-auto ">
+        <li ><a href="/customer/home" style="color:black">Home</a></li>
+        <li ><a href="/customer/booking" style="color:black">Booking</a></li>
+        <li ><a href="/customer/search-car" style="color:black">Search Car</a></li>
+        <li class="active"><a href="/customer/plan" style="color:black">Price Plan</a></li>
+       
+        <li style="margin-left: 100px;"> 
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:transparent;
+            border-style:none;color: black;font-size: 18px;">
+            Account <span class="caret"></span>
+            </button>  
+            <ul class="dropdown-menu">
+              <li style="padding-left: 10px;"><a href="/customer/ongoing-booking">OnGoing Booking</a></li>
+              <li style="padding-left: 10px;"><a href="/customer/booking-history">Booking History</a></li>
+              <li style="padding-left: 10px;"><a href="/logout">SignOut</a></li>
+            </ul></div></li>
+        </ul>
+      </nav>                
+    </div>
+  </div>
+ 
+  <div class="Pricing">
+    <div class="container" style="height: auto;">
+      <div class="col-md-8 mx-auto">
+        <div class=" d-flex pt-5 " >
+          <hr class="line flex-grow-1 "  style="height: 2px; ">
+          <div class="px-4 "> <h2 class="mb-4" style="font-family: 'Playfair Display', serif;"> PRICING</h2></div>
+          <hr class="line flex-grow-1" style="height: 2px;">
+        </div>
+      </div>
+
+      <div class="row col-lg-12 col-md-10 col-xs-6 justify-content-center mt-5 mb-5 pb-5 ">
+        <!--STANDARD-->
+        {% if plan == 0 %}
+        <div class="col-md-4 table-col ">
+          <div class="pricingTable">
+            <h4>STANDARD</h5>
+            <h1>$0 per Month</h1>
+            <ul>
+                <li>No membership costs</li>
+                <li>From $30/hr </li>
+                <hr style="width: 80%; height: 1px; background-color: white;">
+            </ul>    
+            <div style="text-align: center;" class="col text-center">
+              <p><b>SELECTED</b></p>
+            </div>
+          </div>
+        </div><!--./STANDARD-->
+        
+        <!--PERMIUM-->
+        <div class="col-md-4 table-col ">
+          <div class="pricingTable featured">
+            <h4>PREMIUM</h5>
+            <h1>$100 per Year</h1>
+            <ul>
+              <li>From $15.00/hr</li>
+              <li>Minimum total cost $100</li>
+              <hr style="width: 80%; height: 1px; background-color: #f90D53;">
+            </ul>
+            <div class="col text-center">
+              <a href="/customer/plan-summary"><button class="btn order-btn-featured">Select</button></a>
+            </div>
+          </div>
+        </div> <!--./PERMIUM-->
+        {% else %}
+        <div class="col-md-4 table-col ">
+          <div class="pricingTable">
+            <h4>STANDARD</h5>
+            <h1>$0 per Month</h1>
+            <ul>
+                <li>No membership costs</li>
+                <li>From $30/hr </li>
+                <hr style="width: 80%; height: 1px; background-color: white;">
+            </ul>    
+            <div class="col text-center">
+              <a href="/customer/set-plan"><button class="btn order-btn-featured">Select</button></a>
+            </div>
+          </div>
+        </div><!--./STANDARD-->
+        
+        <!--PERMIUM-->
+        <div class="col-md-4 table-col ">
+          <div class="pricingTable featured">
+            <h4>PREMIUM</h5>
+            <h1>$100 per Year</h1>
+            <ul>
+              <li>From $15.00/hr</li>
+              <li>Minimum total cost $100</li>
+              <hr style="width: 80%; height: 1px; background-color: #f90D53;">
+            </ul>
+            <div style="text-align: center;" class="col text-center">
+              <p><b>SELECTED</b></p>
+            </div>
+          </div>
+        </div> <!--./PERMIUM-->
+        {% endif %}
+	            <hr style="height: 1px; background-color: white; width: 80%">
+        </div> <!--row finish-->
+    </div> <!--./container-->
+  </div>
+
+  <div class="mastfoot">
+    <div class="inner">
+    <p style="color: white;">@Copyright Get Your Car Company</p>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

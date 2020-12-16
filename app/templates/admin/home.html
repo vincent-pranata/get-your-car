@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Your Car</title>
+    <script src="{{ url_for('static', filename='admin/jquery.min.js') }}"></script>
+    <link href="{{ url_for('static', filename='admin/style.css') }}" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1632750_204xwxiwzht.css?1583918713" />
+</head>
+<body>
+<div class="body_con">
+    <div class="body_top"> Get Your Car Admin Page</div>
+    <div class="body_left">
+        <ul class="body_left_list">
+        <li>
+                <label>
+                <span>  <a href="/admin/home">Account</a>  </span> 
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><a href="/admin/carlist">Car List</a></span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><a href="/admin/addcar">Register Car</a></span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <span><a href="/admin/userlist">User List</a></span>
+            </li>
+            <li>
+                <label>
+                    <span><a href="/logout">Logout</a></span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    <div class="body_right">
+<div style="text-align: center;vertical-align: middle;margin-top: 200px;font-size: 60px;">
+Welcome back {{username}}
+</div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='admin/style.js') }}"></script>
+</body>
+</html>

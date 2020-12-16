@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Ongoing Booking</title>
+    <style>
+        html,body,div,ul,li,h1,h2,h3,h4,h5,h6,p,dl,dt,dd,ol,form,input,textarea,th,td,select{margin:0;padding:0}
+        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+        html,body{min-height:100%}
+        body{font-family:Helvetica,Pingfang SC,Microsoft YaHei,STHeiti,Verdana,Arial,Tahoma,sans-serif;font-size:14px;color:#333;background:#fff;position:relative}
+        h1,h2,h3,h4,h5,h6{font-weight:normal}
+        ul,ol{list-style:none}
+        img{border:none;vertical-align:middle}
+        a{color:#666;text-decoration:none}
+        a:visited{color:#666;text-decoration:none}
+        a:hover{color:#666;text-decoration:none}
+        a:active{color:#666;text-decoration:none}
+        table{border-collapse:collapse;table-layout:fixed}
+        input,textarea{outline:none;border:none}
+        textarea{resize:none;overflow:auto}
+        .clearfix{zoom:1}
+        .clearfix:after{content:".";width:0;height:0;visibility:hidden;display:block;clear:both;overflow:hidden}
+      
+        header{ position: relative; z-index: 9999;border-bottom:2px solid black ; height: 100px; box-sizing: border-box;}
+        .wrap{width: 1200px;margin: 0 auto;}
+        #nav {display: flex;display: flex;flex-direction: row;justify-content: center;align-items: center;flex-wrap: wrap;}
+        .logo{width: 230px;overflow: hidden;}
+        .logo a{display:block;}
+        .logo a img {max-width: 100%;}
+        ul.nav {display: inline-flex;flex: 1;padding-left:50px;}
+        li.nav-item {flex: 1;}
+        li.nav-item>a{display: block;text-align: center;line-height: 100px;font-size: 16px;position: relative;}
+        li.nav-item>a::before{ display: none; content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); border-width: 0 10px 10px; border-style: solid; border-color: transparent transparent black; position: absolute;}
+        li.nav-item:hover>a ,li.nav-item.active>a{color:black;}
+        li.nav-item:hover>a::before,li.nav-item.active>a::before{display: block;}
+
+ 
+       .subMenu{display: none;position: absolute;top: 100px;left: 0;width: 100%; height: 100px;background-color: #119f0f;font-size:30px;}
+        .subMenu>ul{display: flex;flex-wrap: wrap;flex-direction: row;justify-content: center;align-items: center;}
+        .subMenu>ul>li>a{display:block;padding:0 18px;text-align: center;line-height: 50px;color: #fff;}
+        .subMenu>ul>li>a:hover{color:red}
+
+                /* Table Styles */
+
+                .table-wrapper {
+            margin: 10px 70px 70px;
+            box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+        }
+
+        .fl-table {
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            white-space: nowrap;
+            background-color: white;
+        }
+
+            .fl-table td, .fl-table th {
+                text-align: center;
+                padding: 8px;
+            }
+
+            .fl-table td {
+                border-right: 1px solid #f8f8f8;
+                font-size: 12px;
+            }
+
+            .fl-table thead th {
+                color: #ffffff;
+                background: #4FC3A1;
+            }
+
+
+                .fl-table thead th:nth-child(odd) {
+                    color: #ffffff;
+                    background: #324960;
+                }
+
+            .fl-table tr:nth-child(even) {
+                background: #F8F8F8;
+            }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            .fl-table {
+                display: block;
+                width: 100%;
+            }
+
+            .table-wrapper:before {
+                content: "Scroll horizontally >";
+                display: block;
+                text-align: right;
+                font-size: 11px;
+                color: white;
+                padding: 0 0 10px;
+            }
+
+            .fl-table thead, .fl-table tbody, .fl-table thead th {
+                display: block;
+            }
+
+                .fl-table thead th:last-child {
+                    border-bottom: none;
+                }
+
+            .fl-table thead {
+                float: left;
+            }
+
+            .fl-table tbody {
+                width: auto;
+                position: relative;
+                overflow-x: auto;
+            }
+
+            .fl-table td, .fl-table th {
+                padding: 20px .625em .625em .625em;
+                height: 60px;
+                vertical-align: middle;
+                box-sizing: border-box;
+                overflow-x: hidden;
+                overflow-y: auto;
+                width: 120px;
+                font-size: 13px;
+                text-overflow: ellipsis;
+            }
+
+            .fl-table thead th {
+                text-align: left;
+                border-bottom: 1px solid #f7f7f9;
+            }
+
+            .fl-table tbody tr {
+                display: table-cell;
+            }
+
+                .fl-table tbody tr:nth-child(odd) {
+                    background: none;
+                }
+
+            .fl-table tr:nth-child(even) {
+                background: transparent;
+            }
+
+            .fl-table tr td:nth-child(odd) {
+                background: #F8F8F8;
+                border-right: 1px solid #E6E4E4;
+            }
+
+            .fl-table tr td:nth-child(even) {
+                border-right: 1px solid #E6E4E4;
+            }
+
+            .fl-table tbody td {
+                display: block;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <nav id="nav">
+        
+            <ul class="nav">
+                <li class="nav-item"><a href="/customer/home">Home</a></li>
+                <li class="nav-item"><a href="/customer/booking">Booking</a></li>
+                <li class="nav-item"><a href="/customer/search-car">Search Car</a></li>
+                <li class="nav-item"><a href="/customer/plan">Price Plan</a></li>
+                <li class="nav-item"><a href="#">Contact</a></li>
+                <li class="nav-item"><a href="#">Account</a>
+                    <div class="subMenu">
+                        <ul class="wrap">
+                            <li class="active"><a href="/customer/ongoing-booking">OnGoing Booking</a></li>
+                            <li ><a href="/customer/booking-history">Booking History</a></li>
+                            <li><a href="/logout">Login Out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<script src="{{ url_for('static', filename='booking history/jquery-3.5.1.min.js') }}"></script>
+<p class="mt-mb-2 "style="font-size: 30px;text-align: center;">ONGOING BOOKING</p>
+    <div class="table-wrapper">
+        {% if bookings %}
+        <table class="fl-table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Car ID</th>
+                    <th>Car Name</th>
+                    <th>Start Date</th>
+                    <th>Start Time</th>
+                    <th>End Date</th>
+                    <th>End Time</th>  
+                    <th>Total Hour</th>
+                    <th>Total Cost</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <!-- use foreach loop to print data for tbody-->
+            <tbody>
+                {%for booking in bookings%}
+                <tr>
+                    <td>{{booking[0]}}</td>
+                    <td>{{booking[2]}}</td>
+                    <td>
+                        {%for car in cars%}                    
+                            {% if car[0]==booking[2] %}    
+                                {{car[1]}}
+                            {% endif %}
+                        {%endfor%}
+                    </td>
+                    <td>{{booking[3]}}</td>
+                    <td>{{booking[4]}}</td>
+                    <td>{{booking[5]}}</td>
+                    <td>{{booking[6]}}</td>
+                    <td>{{booking[7]}}</td>
+                    <td>{{booking[8]}}</td>
+                    <td>
+                        <form action="cancel-booking" method="post">
+                            <input type="hidden" value="{{booking[0]}}" name="booking_id">
+                            <button type ="submit" >Cancel Booking</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="complete-booking" method="post">
+                            <input type="hidden" value="{{booking[0]}}" name="booking_id">
+                            <button type ="submit" >Complete Booking</button>
+                        </form>
+                    </td>
+                </tr>
+                {%endfor%}
+            <tbody>
+        </table>
+        {%else%}
+        <div>
+            You have no going booking. 
+        </div>
+        {%endif%}
+    </div>
+
+
+
+</body>
+</html>
+<script>
+    $(function(){
+        $('ul.nav li.nav-item').hover(function(){
+            $(this).children('div.subMenu').stop().slideToggle(600);
+        })
+    })
+</script>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Your Car</title>
+    <link href="{{ url_for('static', filename='admin/style.css') }}" rel="stylesheet" >
+    <link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_1632750_204xwxiwzht.css?1583918713" />
+</head>
+<body>
+    {% if success==False%}
+		<script type="text/javascript">
+			alert("Registration plate has been registered. Please check and try again.")
+		</script>
+    {% endif %}
+        
+    <div class="body_con">
+        <div class="body_top"> Get Your Car Admin Page</div>
+        <div class="body_left">
+            <ul class="body_left_list">
+            <li>
+                    <label>
+                    <span>  <a href="/admin/home">Account</a>  </span> 
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/carlist">Car List</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/addcar">Register Car</a></span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/admin/userlist">User List</a></span>
+                </li>
+                <li>
+                    <label>
+                        <span><a href="/logout">Logout</a></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+    <div class="body_right" >
+        <form action="addcar" method="post">
+
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Name</label>
+        <br>
+        <input type="text" name="name" class="form-control"  id="name" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;"required >
+        <br>
+        
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Description</label>
+        <br>
+        <input type="text" name="description" class="form-control"  id="Description" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;"required >
+        <br>        
+      
+        <label style="font-size:20px;font-weight:bold">Color</label>
+        <br>
+        <input type="text" name="color" class="form-control"  id="color" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" required>
+        <br>
+   
+        <label style="font-size:20px;font-weight:bold">Capacity</label>  
+        <br>
+        <input type="number" min="2" name="capacity" class="form-control"  id="capacity" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" required>       
+        <br>
+
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Registration_plate</label>
+        <br>
+        <input type="text" name="regPlate" class="form-control"  id="regPlate" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;"required >
+        <br>
+        
+        <label style="font-size:20px;font-weight:bold">Fuel Type</label>
+        <br>
+        <select name="fuel" class="form-control"  id="fuel" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" >
+            <option value="0">Standard Unleaded 91</option>
+            <option value="1">Premium 95-octane unleaded </option>
+            <option value="2">Premium 98-octane unleaded </option>
+            <option value="3">E10</option>
+            <option value="4">E85</option>
+        </select>
+        <br>
+
+        <label style="font-size:20px;font-weight:bold">Transmission</label>
+        <br>
+        <select name="transmission" class="form-control"  id="transmission" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;">
+            <option value="0">Manual</option>
+            <option value="1">Automatic</option>
+        </select>
+        <br>
+
+        <label style="font-size:20px;font-weight:bold">Type</label>
+        <br>
+        <select name="type" class="form-control"  id="transmission" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" >
+            <option value="Coupe">Coupe</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Van">Van</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Pickup">Pickup</option>
+        </select>
+        <br>
+
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Image Link</label>
+        <br>
+        <input type="text" name="image" class="form-control"  id="latitude" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" required>
+        <br>
+
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Longitude</label>
+        <br>
+        <input type="text" name="longitude" class="form-control"  id="longitude" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" required>
+        <br>
+
+        <label style="font-size:20px;font-weight:bold; text-align: left;">Latitude</label>
+        <br>
+        <input type="text" name="latitude" class="form-control"  id="latitude" style=" width:500px; border: 1px solid #04B4AE;border-radius: 2px;        font: 12px 'Microsoft YaHei';padding: 8px 14px;margin-bottom: 8px;" required>
+        <br>
+       
+        <br>
+        <input type="submit" name="btnLogin" class="btn btn-primary" value="Submit" style=" border: 2px solid #04B4AE; font-size:20px;
+         width:100px;background-color:white;border-radius:5px";/>
+    </form>
+    </div>
+
+</div>
+
+</body>
+</html>
+
