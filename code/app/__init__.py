@@ -9,7 +9,7 @@ app.secret_key='abcd1234'
 
 mainEngine = MainEngine()
 # for some reason if add the key its shows an error
-gMap = GoogleMaps(app, key="AIzaSyBpdhupqQtvcsVfaMCICcfR-c2A5Jis3BM")
+gMap = GoogleMaps(app, key="{YOUR KEY HERE}")
 
 # Load the views
 from app import views
